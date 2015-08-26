@@ -1,0 +1,103 @@
+﻿<Window x:Class="MediaPlayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MediaPlayer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="460" Background="#c8cfc3"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <MediaElement
+            Name="MyMediaElement"
+            LoadedBehavior="Manual"
+            Source="C:\Users\David\Music\music\KatyPerryFirework.mp3"
+            ></MediaElement>
+        <Button Click="play" Width="100" Height="25">Play</Button>
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="220" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--  Song List -->
+            <ListBox
+                Grid.Column="0"
+                Grid.RowSpan="2"
+                Margin="0,0,10,0">
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image
+                            Width="24" Height="24"
+                            Margin="4"
+                            VerticalAlignment="Center"
+                            Source="Assets\album.jpg" />
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock FontWeight="Bold" Text="The Tilte of the Song" />
+                            <TextBlock Text="Band Name" />
+                        </StackPanel>
+                    </StackPanel>
+
+                </ListBoxItem>
+            </ListBox>
+            <!-- Now Playing -->
+            <ContentControl
+                Width="150"
+                Margin="0,0,0,10"
+                Grid.Column="1"
+                Grid.Row="0" >
+                <Canvas>
+                    <Image
+                        Width="150" Height="150"
+                        Source="Assets\album.jpg" />
+                    <StackPanel Canvas.Top="160">
+                        <TextBlock
+                            Width="150"
+                            FontWeight="Bold"
+                            Text="The Title of the Song (Is Really Long)"
+                            TextTrimming="CharacterEllipsis" />
+                        <TextBlock
+                            Width="150"
+                            Text="Band Name"
+                            TextTrimming="CharacterEllipsis" />
+                        <TextBlock
+                            Width="150"
+                            Text="Album Name"
+                            TextTrimming="CharacterEllipsis" />
+                    </StackPanel>
+                </Canvas>
+            </ContentControl>
+
+            <!-- PlayBack Controls -->
+            <StackPanel
+                Grid.Column="1"
+                Grid.Row="1"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+
+                <!--Volume-->
+                <Slider
+                    Width="46" Height="10"
+                    VerticalAlignment="Center"/>
+
+                <!-- Play -->
+                <ToggleButton
+                    Width="50" Height="50"
+                    Margin="4,0,4,0"
+                    VerticalAlignment="Bottom"
+                    Click="play">Play</ToggleButton>
+
+                <!-- Playback Time -->
+                <TextBlock
+                   Width="40"  Height="20"
+                   Text="00:46"
+                   VerticalAlignment="Center" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
